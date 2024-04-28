@@ -1,20 +1,37 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'class/queta.dart';
+import 'widgets/card_component.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: My(),
+    home: WhatsApp(),
   ));
 }
 
-class My extends StatelessWidget {
-  const My({super.key});
+class WhatsApp extends StatefulWidget {
+  const WhatsApp({super.key});
+
+  @override
+  State<WhatsApp> createState() => _WhatsAppState();
+}
+
+class _WhatsAppState extends State<WhatsApp> {
+  List<Queta> queta2 = [
+    Queta(
+        name: "Shahabuddin",
+        desc: "just like you would any other constructor:"),
+    Queta(
+        name: "Hridoy",
+        desc:
+            "Google uses cookies to deliver its services, to personalize ads"),
+    Queta(name: "Akhon", desc: "You can adjust your privacy controls"),
+    Queta(name: "Akhon", desc: "You can adjust your privacy controls"),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[200],
         appBar: AppBar(
           backgroundColor: Colors.green[300],
           title: const Row(
@@ -40,13 +57,21 @@ class My extends StatelessWidget {
             ],
           ),
         ),
-        body: const Column(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
-              children: [Text("Hello")],
+              children: queta2.map((q) {
+                return CardComponent(
+                    queta: q,
+                    delete: () {
+                      setState(() {
+                        queta2.remove(q);
+                      });
+                    });
+              }).toList(),
             ),
-            Column(
+            const Column(
               children: [
                 Row(
                   children: [
