@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:trip/widgets/card.dart';
 import 'package:trip/class/data.dart';
+import 'package:trip/widgets/card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,9 +14,9 @@ class _HomeState extends State<Home> {
     Product(title: "3 nights", desc: "Beach Paradise", price: "350"),
     Product(title: "5 nights", desc: "City Break", price: "400"),
     Product(title: "2 nights", desc: "Ski Adventure", price: "750"),
-    Product(title: "3 nights", desc: "Beach Paradise", price: "350"),
-    Product(title: "5 nights", desc: "City Break", price: "400"),
-    Product(title: "2 nights", desc: "Ski Adventure", price: "750"),
+    Product(title: "3 nights", desc: "Beach Dominators", price: "350"),
+    Product(title: "5 nights", desc: "Atlanta ways", price: "400"),
+    Product(title: "2 nights", desc: "Peaceful", price: "750"),
   ];
 
   @override
@@ -57,9 +54,7 @@ class _HomeState extends State<Home> {
             ),
             Column(
               children: products.map((q) {
-                return card(
-                  p: q,
-                );
+                return TripCard(p: q); // Use TripCard instead of card
               }).toList(),
             ),
           ],
